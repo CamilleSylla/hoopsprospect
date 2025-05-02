@@ -1,0 +1,52 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../app/database/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                   Int             @id @default(autoincrement())
+  email                String          @unique
+  password             String
+  user_profile_type_id Int
+  profile_type         UserProfileType @relation(fields: [user_profile_type_id], references: [id])
+  user_access_level_id Int
+  access_level         UserAccessLevel @relation(fields: [user_access_level_id], references: [id])
+  firstname            String
+  lastname             String
+  date_of_birth        DateTime
+  created_at           DateTime        @default(now())
+  update_at            DateTime        @default(now()) @updatedAt
+}
+
+model UserProfileType {
+  id    Int                  @id @default(autoincrement())
+  users User[]
+  label UserProfileTypeLabel @unique
+}
+
+model UserAccessLevel {
+  id    Int                  @id @default(autoincrement())
+  users User[]
+  label UserAccessLevelLabel @unique
+}
+
+enum UserAccessLevelLabel {
+  ADMIN
+  VIEWER
+}
+
+enum UserProfileTypeLabel {
+  PLAYER
+  RECRUITER
+}
