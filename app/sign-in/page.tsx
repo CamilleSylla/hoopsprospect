@@ -6,11 +6,14 @@ import {
   UserCreateValidation,
   UserCreateValidationType,
 } from "../validation/schema/user";
+import { useRouter } from "next/navigation";
 
 export default function SignInPage() {
+  const { push } = useRouter();
   const onSubmit = async (payload: UserCreateValidationType) => {
     try {
       await createUser(payload);
+      push("/log-in");
     } catch (error) {
       console.log(error);
     }
