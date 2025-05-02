@@ -13,7 +13,7 @@ export default function SignInPage() {
   const onSubmit = async (payload: UserCreateValidationType) => {
     try {
       await createUser(payload);
-      push("/log-in");
+      push("/auth/log-in");
     } catch (error) {
       console.log(error);
     }

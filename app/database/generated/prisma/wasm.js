@@ -123,6 +123,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
+  emailVerified: 'emailVerified',
   password: 'password',
   user_profile_type_id: 'user_profile_type_id',
   user_access_level_id: 'user_access_level_id',
@@ -143,6 +144,36 @@ exports.Prisma.UserAccessLevelScalarFieldEnum = {
   label: 'label'
 };
 
+exports.Prisma.AccountScalarFieldEnum = {
+  userId: 'userId',
+  type: 'type',
+  provider: 'provider',
+  providerAccountId: 'providerAccountId',
+  refresh_token: 'refresh_token',
+  access_token: 'access_token',
+  expires_at: 'expires_at',
+  token_type: 'token_type',
+  scope: 'scope',
+  id_token: 'id_token',
+  session_state: 'session_state',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SessionScalarFieldEnum = {
+  sessionToken: 'sessionToken',
+  userId: 'userId',
+  expires: 'expires',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.VerificationTokenScalarFieldEnum = {
+  identifier: 'identifier',
+  token: 'token',
+  expires: 'expires'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -151,6 +182,11 @@ exports.Prisma.SortOrder = {
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 exports.UserProfileTypeLabel = exports.$Enums.UserProfileTypeLabel = {
   PLAYER: 'PLAYER',
@@ -165,7 +201,10 @@ exports.UserAccessLevelLabel = exports.$Enums.UserAccessLevelLabel = {
 exports.Prisma.ModelName = {
   User: 'User',
   UserProfileType: 'UserProfileType',
-  UserAccessLevel: 'UserAccessLevel'
+  UserAccessLevel: 'UserAccessLevel',
+  Account: 'Account',
+  Session: 'Session',
+  VerificationToken: 'VerificationToken'
 };
 
 /**

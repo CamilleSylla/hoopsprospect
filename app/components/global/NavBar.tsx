@@ -39,7 +39,7 @@ export default function NavBar({ className }: { className?: string }) {
 
 const UserButton = ({ logged }: { logged?: boolean }) => {
   return (
-    <Link href={"/log-in"} className="uppercase text-xs px-8 py-2 border">
+    <Link href={"/auth/log-in"} className="uppercase text-xs px-8 py-2 border">
       Log in
     </Link>
   );
